@@ -1,3 +1,6 @@
-# SQL Research
+# Advanced SQL
+Advanced **SQL** Techniques and Implementation
+##  
 
-A Repository for SQL Research and Implementation
+
+
