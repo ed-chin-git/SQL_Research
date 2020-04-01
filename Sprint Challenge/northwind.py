@@ -7,7 +7,6 @@ def conx_sqlite(db_filename):
 
 
 def run_queries(cur):
-    print('____________NORTHWIND STATUS REPORT ___________________\n')
     # ___ 10 most expensive Products __________________________________________
     qry = '''
     SELECT p.ProductName, p.UnitPrice
@@ -66,6 +65,8 @@ def run_queries(cur):
     print('\n-- 10 Largest Categories by # of Products --')
     for row in cur.execute(qry):
         print(row[0], "....", row[1])
+
+
     # __What are the top five territories (by number of employees)__
     qry = '''
     SELECT t.TerritoryDescription, COUNT(e.LastName) eCount
@@ -94,9 +95,10 @@ def main():
     cur = conn.cursor()
 
     # _____  Process ______
+    print('____________NORTHWIND STATUS REPORT ___________________\n')
     run_queries(cur)
     run_new_queries(cur)
-
+    print('________________ END of REPORT ________________________\n')
     # ___end main ________
     cur.close()
     conn.close()
