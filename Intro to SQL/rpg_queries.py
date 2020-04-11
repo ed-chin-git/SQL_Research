@@ -21,7 +21,7 @@ def run_queries(c):
     '''
     for row in c.execute(qry):
         print('There are a total of', row[0], 'Characters')
-
+        
     # _____ How many of each Character sublass  _____________
     qry = '''
     SELECT COUNT(character_ptr_id) FROM charactercreator_cleric
