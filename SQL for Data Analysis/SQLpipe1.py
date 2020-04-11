@@ -16,7 +16,7 @@ def verify_output(pgres_engine, table_name):
     return
 
 
-def run_conversion(pgres_engine):
+def run_conversion(pgres_engine, lite_engine):
     # ___ process tables ____
     # - WARNING!  schema must already exist
     schema_name = 'lambdaRPG'
@@ -31,8 +31,8 @@ def run_conversion(pgres_engine):
               'armory_weapon']
 
     # ___ connect to  sqlite3  ____
-    lite_engine = create_engine('sqlite+pysqlite:///rpg_db.sqlite3',
-                                module=sqlite)
+    # lite_engine = create_engine('sqlite+pysqlite:///rpg_db.sqlite3',
+    #                             module=sqlite)
 
     for table_name in tables:
         print('converting........ ', table_name)
@@ -55,7 +55,7 @@ def run_conversion(pgres_engine):
 
 
 def main():
-    # __ Connect to postgres (SQLalchemy.engine) ____
+    # __ Connect to postgres w/SQLalchemy.engine ____
     dbname = ''
     user = ''
     host = ''
@@ -73,8 +73,12 @@ def main():
     pgres_str = 'postgresql+psycopg2://'+user+':'+passw+'@'+host+'/'+dbname
     pgres_engine = create_engine(pgres_str)
 
+    # ___ connect to  sqlite3 w/SQLalchemy.engine  ____
+    lite_engine = create_engine('sqlite+pysqlite:///rpg_db.sqlite3',
+                                module=sqlite)
+
     # ____ Port sqlite to postgres ___
-    run_conversion(pgres_engine)
+    run_conversion(pgres_engine, lite_engine)
 
     # ___ end main ___________
 
