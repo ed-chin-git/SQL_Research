@@ -23,7 +23,7 @@ def main():
     # ____ create cursor ___
     pg_cur = pg_conn.cursor()
 
-    # _  Create table  in PostgreSQL
+    # _  Re-Create table  in PostgreSQL
     create_table = """CREATE TABLE titanic (
     passenger_id SERIAL PRIMARY KEY,
     survived int,
@@ -41,30 +41,33 @@ def main():
     # ____ Port titanic.csv to Postgres ___
     csv_url = "titanic.csv"
     df = pd.read_csv(csv_url)
+
     single_quote = "'"
     double_quote = '"'
-    for i in range(len(df)):
+    for index, row in df.iterrows(): 
         # Changes O'Dwyer to O"Dwyer to correct bug in INSERT string
-        na_me = str(df['Name'].iloc[i]).replace(single_quote, double_quote)  
-        SQLinsert = 'INSERT INTO titanic (Survived, pclass, name, sex, age, SSAboard, PCAboard, fare) VALUES('
-        SQLinsert = SQLinsert + str(df['Survived'].iloc[i]) + ',' \
-                              + str(df['Pclass'].iloc[i]) + ",'" \
-                              + na_me + "','" \
-                              + df['Sex'].iloc[i] + "'," \
-                              + str(df['Age'].iloc[i]) + ',' \
-                              + str(df['SSAboard'].iloc[i]) + ',' \
-                              + str(df['PCAboard'].iloc[i]) + ',' \
-                              + str(df['Fare'].iloc[i])+');'
+        na_me = row.Name.replace(single_quote, double_quote)
+        row_list = (row.Survived,
+                    row.Pclass,
+                    na_me,
+                    row.Sex,
+                    int(row.Age),
+                    row.SSAboard,
+                    row.PCAboard,
+                    row.Fare)
+        SQLinsert = 'INSERT INTO titanic (Survived, pclass, name, sex, age, SSAboard, PCAboard, fare) VALUES'
+        SQLinsert = SQLinsert + str(row_list)
         print(SQLinsert)
         pg_cur.execute(SQLinsert)
-    pg_conn.commit() # commit all the INSERTs
+
+    pg_conn.commit()  # commit all the INSERTs
 
     # _______ verify output  _________
     query = "SELECT * FROM public.titanic LIMIT 15;"
     print('--- public.titanic table ---')
     pg_cur.execute(query)
     for row in pg_cur.fetchall():
-        print(row)
+        print(row[3],row[4],row[8] )
 
     # ___ end main ___________
     pg_cur.close()   # close cursor
