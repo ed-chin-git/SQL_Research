@@ -4,7 +4,9 @@
 ----------------------------------------------------------------
 """
 import psycopg2
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # ___ Connect to ElephantSQL db _________
 def conx_elephant(conx_str):
@@ -18,7 +20,7 @@ def run_queries(c):
     print('----- T I T A N I C   I N F O ------')
     # _____ How Many Total pASSENGERSs_____________________
     query = """
-    SELECT COUNT(public.titanic.index)
+    SELECT COUNT(public.titanic.passenger_id)
     FROM public.titanic
     """
     c.execute(query)
@@ -26,18 +28,18 @@ def run_queries(c):
     print('There were a total of', rows[0], 'passengers')
 
     query = """
-    SELECT COUNT(public.titanic.index)
+    SELECT COUNT(public.titanic.passenger_id)
     FROM public.titanic
-    WHERE public.titanic."Survived" > 0
+    WHERE public.titanic.survived > 0
     """
     c.execute(query)
     rows = c.fetchone()
     print(rows[0], 'passengers survived')
 
     query = """
-    SELECT COUNT(public.titanic.index)
+    SELECT COUNT(public.titanic.passenger_id)
     FROM public.titanic
-    WHERE public.titanic."Survived" < 1
+    WHERE public.titanic.survived < 1
     """
     c.execute(query)
     rows = c.fetchone()
@@ -45,28 +47,17 @@ def run_queries(c):
 
 
 def main():
-        # ____ Connect to an ElephantSQL __________
-    dbname = ''
-    user = ''
-    host = ''
-    passw = ''
-    file = open('elephant.pwd', 'r')
-    ctr = 1
-    for line in file:
-        line = line.replace('\n', '')
-        if ctr == 1:
-            dbname = line
-        if ctr == 2:
-            user = line
-        if ctr == 3:
-            host = line
-        if ctr == 4:
-            passw = line
-        ctr = ctr + 1
+    # ____ Connect to an ElephantSQL __________
+    dbname = os.getenv("DS_DB_NAME")
+    user = os.getenv("DS_DB_USER")
+    host = os.getenv("DS_DB_HOST")
+    passw = os.getenv("DS_DB_PASSWORD")
     conx_str = 'dbname=' + dbname + ' user=' + user + ' host=' + host + ' password=' + passw
     conn = conx_elephant(conx_str)
     cur = conn.cursor()  # create cursor
+
     run_queries(cur)
+
     cur.close()
     conn.close()   # Close the connection
     return
