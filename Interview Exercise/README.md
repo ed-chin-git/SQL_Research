@@ -14,7 +14,7 @@ It's an exciting one.
 So grab your keyboard and test yourself and your SQL skills!
 
 
-Tom's Pen Shop
+## Tom's Pen Shop
 
 Disclaimer: the business in this task is a hypothetical business. Any similarity to reality is purely coincidental.
 
@@ -22,7 +22,7 @@ Tom has a nice and simple e-commerce business.
 He sells only one product: a super ergonomic pen.
 Recently, Tom ran an A/B test with ~2,000 users. To 30% of his audience he showed (and sold) a new pen design with a red case. To the other 70% he showed (and sold) the original blue-case design. The data flew in and it's stored in an SQL database.
 
-You have 2 data tables: 
+### You have 2 data tables: 
 
 abtest_users. Every row in this table represents a unique user who was part of the AB-test. The table has two columns:
 user_id: this shows the unique user_id of a given user.
@@ -36,10 +36,10 @@ abtest_users: here
 abtest_purchases: here
 Your task is:
 
-Put the data into SQL!
-Discover the data!
-Write an SQL query to answer this question:
-Which group won the A/B test? The red or the blue one?
+### Put the data into SQL!
+### Discover the data!
+### Write an SQL query to answer this question:
+### Which group won the A/B test? The red or the blue one?
 Note: Answer this question by writing one and only one SQL query. Also, make sure it's the best and simplest one. 
 Okay, this is the exercise -- go ahead and solve it!
 
@@ -51,7 +51,7 @@ Once you are done, come back, scroll down and see my solution below.
 .
  
 
-The solution:
+## The Solution:
 
 Query:
 
@@ -81,7 +81,7 @@ divided by...
 the total number of users...
 ...for both blue and red pens.
 
-Let's see how it's done in SQL!
+## Let's see how it's done in SQL!
 
 First, we will need to JOIN the abtest_purchases and abtest_users tables:
 
@@ -105,7 +105,7 @@ The total number of unique users: COUNT(DISTINCT(abtest_users.user_id))
 Important! Because of the FULL JOIN, it also matters which table you get the user_id data from. The total number of purchases should come from the abtest_purchases table, the total number of unique users should come from the abtest_users table.
 (Note: if you don't get why, try to change the table names in your calculation and you'll see the difference in the results.)
 
-The final query is:
+## The final query is:
 
 SELECT segment,
       COUNT(abtest_purchases.user_id)/
@@ -115,11 +115,3 @@ FULL JOIN abtest_purchases
 ON abtest_users.user_id = abtest_purchases.user_id
 GROUP BY segment;
 Eventually, I renamed my conversion column to ppu (that stands for "purchases per user") and converted it to float format for easier interpretation.
-…
-
-And that's it!
-Did you manage to navigate around all the traps and solve it?
-Congratulations! Very nice job!!
-
-Couldn't fully solve it? Or couldn't start it at all?
-No worries - I have 60 more SQL exercises for you. They start from the very basics (SELECT * FROM datatable;) and guide you to the intermediate level (JOIN, HAVING, subqueries)...
