@@ -176,7 +176,7 @@ def run_queries(c):
 def main():
     #  DB filepath = current directory
     DB_FILEPATH = os.path.join(os.path.dirname(__file__), "rpg_db.sqlite3")
-    conn = conx_sqlite(DB_FILEPATH)  # create connection 
+    conn = conx_sqlite(DB_FILEPATH)  # create connection
     conn.row_factory = sqlite3.Row  # Use row objects per Mike Rossetti
     cur = conn.cursor()  # create cursor
     run_queries(cur)
