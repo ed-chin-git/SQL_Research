@@ -22,48 +22,44 @@ Tom has a nice and simple e-commerce business.
 He sells only one product: a super ergonomic pen.
 Recently, Tom ran an A/B test with ~2,000 users. To 30% of his audience he showed (and sold) a new pen design with a red case. To the other 70% he showed (and sold) the original blue-case design. The data flew in and it's stored in an SQL database.
 
-### You have 2 data tables: 
+## You have 2 data tables: 
 
-abtest_users. Every row in this table represents a unique user who was part of the AB-test. The table has two columns:
-user_id: this shows the unique user_id of a given user.
-segment: was the user in the blue or the red A/B test segment?
-abtest_purchases. Every row represents a unique purchase event. One purchase event (one row in the table) means exactly one pen sold. But since one user can buy multiple times, the same user can show up more than once in this table. The table has two columns:
-purchase_id: the unique identifier for a purchase event (randomly generated for each purchase event)
-user_id: the unique user_id of a given user who made a given purchase
-Download the data files here:
+## abtest_users :
 
-abtest_users: here
-abtest_purchases: here
-Your task is:
+Every row in this table represents a unique user who was part of the AB-test. The table has two columns:
 
-### Put the data into SQL!
-### Discover the data!
+    user_id: this shows the unique user_id of a given user.
+    segment: was the user in the blue or the red A/B test segment?
+    
+## abtest_purchases :
+
+Every row represents a unique purchase event. One purchase event (one row in the table) means exactly one pen sold. But since one user can buy multiple times, the same user can show up more than once in this table. The table has two columns:
+
+    purchase_id: the unique identifier for a purchase event (randomly generated for each purchase event)
+    user_id: the unique user_id of a given user who made a given purchase
+    
+## Your task is:
+
+### Put the data into SQL! Discover the data!
 ### Write an SQL query to answer this question:
 ### Which group won the A/B test? The red or the blue one?
-Note: Answer this question by writing one and only one SQL query. Also, make sure it's the best and simplest one. 
-Okay, this is the exercise -- go ahead and solve it!
+    Note: Answer this question by writing one and only one SQL query. Also, make sure it's the best and simplest one. 
 
-Once you are done, come back, scroll down and see my solution below.
 
-.
-.
-.
-.
- 
 
 ## The Solution:
 
 Query:
 
-SELECT segment,
-      COUNT(abtest_purchases.user_id)/
-      COUNT(DISTINCT(abtest_users.user_id))::float AS ppu
-FROM abtest_users
-FULL JOIN abtest_purchases
-ON abtest_users.user_id = abtest_purchases.user_id
-GROUP BY segment;
-Brief explanation:
-
+    SELECT segment,
+          COUNT(abtest_purchases.user_id)/
+          COUNT(DISTINCT(abtest_users.user_id))::float AS ppu
+    FROM abtest_users
+    FULL JOIN abtest_purchases
+    ON abtest_users.user_id = abtest_purchases.user_id
+    GROUP BY segment;
+    Brief explanation:
+    
 This was a tricky task.
 But I can tell you, in a real job interview situation, you can expect similar ones.
 So stay with me, I'll lead you through the solution.
@@ -85,33 +81,40 @@ the total number of users...
 
 First, we will need to JOIN the abtest_purchases and abtest_users tables:
 
-SELECT *
-FROM abtest_users
-FULL JOIN abtest_purchases
-ON abtest_users.user_id = abtest_purchases.user_id;
+    SELECT *
+    FROM abtest_users
+    FULL JOIN abtest_purchases
+    ON abtest_users.user_id = abtest_purchases.user_id;
+
 Notice that we used a FULL JOIN. The reason is simple: there are users who didn't buy anything at all. (As I said, this was a tricky question. ;-)) To calculate the true conversion rate, we need to count them in, too. (With a simple inner JOIN they would have been - falsely - excluded.)
+
 Next step.
+
 Let's do the segmentation using the GROUP BY clause with a simple COUNT function:
 
-SELECT segment,
-      COUNT(*)
-FROM abtest_users
-FULL JOIN abtest_purchases
-ON abtest_users.user_id = abtest_purchases.user_id
-GROUP BY segment;
+    SELECT segment,
+          COUNT(*)
+    FROM abtest_users
+    FULL JOIN abtest_purchases
+    ON abtest_users.user_id = abtest_purchases.user_id
+    GROUP BY segment;
+
 And the last step is to replace the COUNT(*) function with our actual calculation:
+
 The total number of purchases: COUNT(abtest_purchases.user_id)
 The total number of unique users: COUNT(DISTINCT(abtest_users.user_id))
+
 Important! Because of the FULL JOIN, it also matters which table you get the user_id data from. The total number of purchases should come from the abtest_purchases table, the total number of unique users should come from the abtest_users table.
 (Note: if you don't get why, try to change the table names in your calculation and you'll see the difference in the results.)
 
 ## The final query is:
 
-SELECT segment,
-      COUNT(abtest_purchases.user_id)/
-      COUNT(DISTINCT(abtest_users.user_id))::float AS ppu
-FROM abtest_users
-FULL JOIN abtest_purchases
-ON abtest_users.user_id = abtest_purchases.user_id
-GROUP BY segment;
+    SELECT segment,
+    COUNT(abtest_purchases.user_id)/
+    COUNT(DISTINCT(abtest_users.user_id))::float AS ppu
+    FROM abtest_users
+    FULL JOIN abtest_purchases
+    ON abtest_users.user_id = abtest_purchases.user_id
+    GROUP BY segment;
+    
 Eventually, I renamed my conversion column to ppu (that stands for "purchases per user") and converted it to float format for easier interpretation.
