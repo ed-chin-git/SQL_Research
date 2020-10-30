@@ -1,6 +1,7 @@
 '''
 Redshift server-side cursor with Psycopg2 Python adapter for better query performance
-MARCH 8, 2020
+MARCH 8, 2020  https://datahappy.wordpress.com/2020/03/08/redshift-server-side-cursor-for-query-performance-boost-using-psycopg2-python-adapter/
+
 When it comes to extracting data out of AWS Redshift using a Python client, 
 you’d typically end up using Psycopg2 Postgres adapter because it’s the most common one.
 Today I’d like to share some of my thoughts on how to boost up the performance when querying large datasets. 
