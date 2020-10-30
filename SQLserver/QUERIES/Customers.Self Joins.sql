@@ -1,5 +1,6 @@
 /****** https://www.tutorialspoint.com/sql/sql-self-joins.htm 
         Self Joins   ******/
+USE tutorials
 SELECT a.[id] as a_id
 	  ,a.name as a_name
 	  ,a.salary as a_salary
@@ -15,5 +16,4 @@ WHERE a.salary < b.salary
 ORDER BY
 		 a_salary
         ,B_SALARY      
-; 
-
+;
