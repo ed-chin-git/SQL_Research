@@ -1,3 +1,8 @@
 use AdventureWorks2012
-select * from Sales.SalesOrderHeader
-where OnlineOrderFlag = 1
+
+
+select * from vEcomSales
+ORDER BY OrderDate, SalesOrderID, ProductID
+
+select * from vStoreSales
+
