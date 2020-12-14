@@ -6,7 +6,7 @@ SELECT  t1.[name]  as t1_name
 
 /* DO NOT include with WHERE clause (not in GROUP BY)  
        ,t2.[Sales] as t2_sales
-	   ,t2.[name]  as t2_name
+	,t2.[name]  as t2_name
 */
 
        ,COUNT(t2.name) as Sales_Rank
