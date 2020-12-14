@@ -4,7 +4,8 @@
 SELECT  t1.[name]  as t1_name
        ,t1.[Sales] as t1_sales
 
-/* DO NOT include with WHERE clause (not in GROUP BY)  
+/* DO NOT include with WHERE clause
+  (columns are not in GROUP BY)  
        ,t2.[Sales] as t2_sales
 	,t2.[name]  as t2_name
 */
