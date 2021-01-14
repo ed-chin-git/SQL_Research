@@ -15,6 +15,6 @@ FROM [tutorials].[dbo].[Customers] as a,
 WHERE a.salary <= b.salary
 
 ORDER BY
-	 a.salary DESC
-        ,b.SALARY      
+	 a.salary DESC,
+     b.SALARY      
 ;

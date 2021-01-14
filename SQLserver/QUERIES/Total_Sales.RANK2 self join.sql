@@ -17,7 +17,7 @@ ORDER BY t1.Sales DESC,
 
 SELECT t1.[name]
       ,t1.[Sales] t1_Sales
-	  ,t2.name t2_name
+	  ,t2.name  t2_name
 	  ,t2.Sales t2_Sales
 FROM [dbo].[Total_Sales] as t2,
      [dbo].[Total_Sales] as t1
