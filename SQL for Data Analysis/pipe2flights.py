@@ -64,8 +64,7 @@ def main():
     pg_cur = pg_conn.cursor()
 
     # ___ Create table  in PostgreSQL ___
-    # pg_cur.execute('DROP TABLE {} ;'.format(new_table_name))
-    # pg_conn.commit()  # commit the DROP
+    pg_cur.execute('DROP TABLE IF EXISTS {} CASCADE;'.format(new_table_name))
     pg_cur.execute('CREATE TABLE {} '.format(new_table_name) + new_table_columns)
     pg_conn.commit()  # commit the CREATE
 
