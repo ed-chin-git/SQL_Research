@@ -1,3 +1,5 @@
+-- Advanced SQL subqueries
+--  https://data36.com/sql-data-analysis-advanced-tutorial-ep6/
 (SELECT 
   tailnum,
   avg_dd
