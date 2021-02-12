@@ -32,4 +32,9 @@ https://hub.docker.com/_/postgres
 ## Start the existing docker container
 
     - docker run pgres
-    
+
+
+## Start command line in Docker container from powershell or WSL distro
+     - docker exec -it tscale bash
+     - psql -U postgres
+     - \l
