@@ -3,7 +3,10 @@ https://hub.docker.com/_/postgres
 
 
 
-## Create persistant volume in docker, later mapped to default data folder in container
+## Create persistant volume in docker,
+## later mapped to default data folder in container
+### Docker volumes are stored in \\\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes  
+
 $ docker volume create --name pgres_data  
 $ docker volume ls
 
