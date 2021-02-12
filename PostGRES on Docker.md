@@ -13,7 +13,7 @@ $ docker run -d \
     --name pgres \
     -p 5400:5432  
     -e POSTGRES_PASSWORD=mysecretpassword \
-    -v vol1:/var/lib/postgresql/data \
+    -v pgres_data:/var/lib/postgresql/data \
     postgres
 
 ### Docker run parameters
