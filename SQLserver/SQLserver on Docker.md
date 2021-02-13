@@ -24,3 +24,6 @@
 ## MS-SQLserver data files by default, are in this container location :
     /var/opt/mssql/data  
 This can be mapped to a docker volume during "docker run' with -v flag
+
+## Run CLI/bash in a running container 
+    docker exec -it ssrv2017 bash
