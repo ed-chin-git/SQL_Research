@@ -11,7 +11,6 @@
        -v: mount volume/directory
 
 
-
 ## Start an existing docker container
 
     - docker run ssrv2017
@@ -21,3 +20,7 @@
                        local-image:tag                            dockerHub-repo:tag    
 ## Push image to DockerHub
     docker push edgardochin/ms_sqlserver:sqlserver-2017
+
+## MS-SQLserver data files by default, are in this container location :
+    /var/opt/mssql/data  
+This can be mapped to a docker volume during "docker run' with -v flag
