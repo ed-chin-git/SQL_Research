@@ -1,4 +1,4 @@
-#  Docker Installation of MS SQL Server     
+    #  Docker Installation of MS SQL Server     
 
 ## Initial creation of docker container from the docker hub image
 
@@ -14,5 +14,10 @@
 
 ## Start an existing docker container
 
-- docker run ssrv2017
+    - docker run ssrv2017
 
+## retag existing local image
+    docker tag mcr.microsoft.com/mssql/server:2017-latest edgardochin/ms_sqlserver:sqlserver-2017
+                       local-image:tag                            dockerHub-repo:tag    
+## Push image to DockerHub
+    docker push edgardochin/ms_sqlserver:sqlserver-2017
