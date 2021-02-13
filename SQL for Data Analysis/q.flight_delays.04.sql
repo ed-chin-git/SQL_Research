@@ -1,0 +1,6 @@
+-- ________________ QUERIES _____________________
+-- exactly how many flights are in our table (count)
+-- the sum of the airtimes (note: practically speaking, airtime is the flight time) of these flights
+-- the average arrival delays and the average departure delays
+-- the maximum distance of any of these flights
+-- the minimum distance of any of these flights
