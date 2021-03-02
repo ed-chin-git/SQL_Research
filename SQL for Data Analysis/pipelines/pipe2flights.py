@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 csv_url = "flights.csv"
-new_table_name = 'flight_delays'
+new_table_name = 'flight_delay'
 new_table_columns = """(
 id SERIAL PRIMARY KEY,
 Yr int,
