@@ -1,4 +1,4 @@
-# Docker Desktop install on Windows Home. 
+# Docker Desktop install on Windows Home 
 
 ## I get the error notification "You must in the docker-users group."
 
