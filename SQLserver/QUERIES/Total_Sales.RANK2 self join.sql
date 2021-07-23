@@ -1,4 +1,5 @@
-/** SELF JOIN : Compute Rank by Highest Sales Amount  ***/
+/** SELF JOIN : Compute Rank by Highest Sales Amount
+  https://1keydata.com/sql/sql-rank.html ***/
 
 use tutorials
 SELECT t1.[name]
