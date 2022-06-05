@@ -21,7 +21,7 @@ ORDER BY c.DateKey
 --============== Grand Totals ================================
 SELECT SUM(TotalCalls) GrandTotalOfCalls,
 	   SUM(TotalOrders) GrandTotalOfOrders
-FROM (=
+FROM (
 	SELECT c.DateKey
 			,SUM(c.Calls) TotalCalls
 	FROM dbo.FactCallCenter c
@@ -31,7 +31,7 @@ FROM (=
 --	HAVING SUM(c.Calls) > @NumofCalls
 	 ) a
 	LEFT OUTER JOIN (
-		SELECT c.DateKey
+		SELECT c.DateKey-
 				,SUM(c.Orders) TotalOrders
 		FROM dbo.FactCallCenter c
 		left outer join dbo.DimDate d on c.DateKey = d.DateKey 

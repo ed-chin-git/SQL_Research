@@ -107,7 +107,7 @@
 <font NAME="SansSerif" SIZE="18"/>
 </node>
 </node>
-<node CREATED="1604422426232" FOLDED="true" HGAP="43" ID="ID_526464767" MODIFIED="1650427358475" POSITION="left" TEXT="ACID" VSHIFT="-75">
+<node CREATED="1604422426232" HGAP="43" ID="ID_526464767" MODIFIED="1654278927785" POSITION="left" TEXT="ACID" VSHIFT="-75">
 <font BOLD="true" NAME="SansSerif" SIZE="20"/>
 <node CREATED="1604422513788" HGAP="178" ID="ID_1872500645" MODIFIED="1604505281688" TEXT="An acronym and mnemonic device for learning and remembering the four primary attributes ensured to any transaction by a transaction manager (AKA transaction monitor).   &#xa;Concept is described in ISO/IEC 10026-1:1992 Section 4. Each of these attributes can be measured against a benchmark. In general, however, a transaction manager/monitor is designed to realize the ACID concept.&#xa;In a distributed system, one way to achieve ACID is to use a two-phase commit (2PC), which ensures that all involved sites must commit to transaction completion or none do, and the transaction is rolled back." VSHIFT="2">
 <font BOLD="true" NAME="Verdana" SIZE="12"/>
