@@ -1,15 +1,20 @@
--- Query 5:
-
+/** Query 5:
 From the login_details table, fetch the users who logged in consecutively 3 or more times.
 
---Table Structure:
+Approach:   We need to fetch users who have appeared 3 or more times consecutively in login details table. 
+            There is a window function which can be used to fetch data from the following record. 
+            Use that window function to compare the user name in current row with user name in 
+            the next row and in the row following the next row. If it matches then fetch those records.
+**/
 
+-- __________ create table  _________________
 drop table login_details;
 create table login_details(
 login_id int primary key,
 user_name varchar(50) not null,
 login_date date);
 
+-- current_date works only in postGRES
 delete from login_details;
 insert into login_details values
 (101, 'Michael', current_date),
@@ -28,8 +33,7 @@ insert into login_details values
 
 select * from login_details;
 
---Solution:
-
+-- ______________ S O L U T I O N _______________________
 select distinct repeated_names
 from (
 select *,

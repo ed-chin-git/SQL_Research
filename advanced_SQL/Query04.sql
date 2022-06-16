@@ -1,9 +1,14 @@
--- Query 4:
-
+/** Query 4:
 From the doctors table, fetch the details of doctors who work in the same hospital but in different speciality.
+Approach:   Use self join to solve this problem. 
+            Self join is when you join a table to itself.
 
---Table Structure:
+Additional Query: 
+        Write SQL query to fetch the doctors who work in same 
+        hospital irrespective of their specialty.
+**/
 
+-- __________ create table  _________________
 drop table doctors;
 create table doctors
 (
@@ -25,22 +30,17 @@ insert into doctors values
 
 select * from doctors;
 
---Solution:
-
+-- ______________ S O L U T I O N _______________________
 select d1.name, d1.speciality,d1.hospital
 from doctors d1
 join doctors d2
 on d1.hospital = d2.hospital and d1.speciality <> d2.speciality
 and d1.id <> d2.id;
 
+-- _________________  Sub Question  ______________________
+-- Now find the doctors who work in same hospital irrespective of their speciality.
 
-
---Sub Question:
-
-Now find the doctors who work in same hospital irrespective of their speciality.
-
---Solution:
-
+-- ______________ S O L U T I O N __________________________
 select d1.name, d1.speciality,d1.hospital
 from doctors d1
 join doctors d2

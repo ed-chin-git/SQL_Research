@@ -1,5 +1,5 @@
 # Advanced SQL
-Advanced **SQL** Techniques and Implementation
+Advanced **SQL** Techniques and Implementation in postGres
 ##  
 [SQL Query to fetch N consecutive records (Youtube) ](https://youtu.be/8p_OzqIJ_p4)  
 [Practice Complex SQL Queries (blog)](https://techtfq.com/blog/learn-how-to-write-sql-queries-practice-complex-sql-queries)

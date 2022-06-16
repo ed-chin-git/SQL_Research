@@ -1,9 +1,11 @@
--- Query 2:
-
+/** Query 2:
 Write a SQL query to fetch the second last record from a employee table.
 
---Tables Structure:
+Approach:   Using window function sort the data in descending order based on employee id. 
+            Provide a row number to each of the record and fetch the record having row number as 2.
+**/
 
+-- __________ create table  _________________
 drop table employee;
 create table employee
 ( emp_ID int primary key
@@ -38,7 +40,7 @@ insert into employee values(124, 'Dheeraj', 'IT', 11000);
 
 select * from employee;
 
--- Solution:
+-- ______________ S O L U T I O N _______________________
 select emp_id, emp_name, dept_name, salary
 from (
 select *,

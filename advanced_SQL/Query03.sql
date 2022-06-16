@@ -1,10 +1,14 @@
--- Query 3:
-
+/** Query 3:
 Write a SQL query to display only the details of employees who either earn the highest salary
 or the lowest salary in each department from the employee table.
 
---Tables Structure:
+Approach:   Write a sub query which will partition the data based on each department and then identify 
+            the record with maximum and minimum salary for each of the partitioned department. 
+            Finally, from the main query fetch only the data which matches the maximum and minimum salary 
+            returned from the sub query.
+**/
 
+-- _______________ Create Table Structure __________________
 drop table employee;
 create table employee
 ( emp_ID int primary key
@@ -39,7 +43,7 @@ insert into employee values(124, 'Dheeraj', 'IT', 11000);
 
 select * from employee;
 
--- Solution:
+-- ______________ S O L U T I O N _______________________
 select x.*
 from employee e
 join (select *,

@@ -1,4 +1,4 @@
-/** Query 1:
+/** Query 1:   
 Write a SQL query to fetch all the duplicate records from a table.
 Note: Record is considered duplicate if a user name is present more than once.
 
@@ -7,7 +7,7 @@ Approach:   Partition the data based on user name and then give a row number to 
             Using the row number which is other than 1, we can identify the duplicate records.
 **/
 
--- Create Table Structure:
+--- __________ create table  _________________
 drop table users;
 create table users
 (
@@ -24,8 +24,7 @@ insert into users values
 
 select * from users;
 
--- Solution 1:
-
+-- ______________ S O L U T I O N _______________________
 -- Replace ctid with rowid for Oracle, MySQL and Microsoft SQLServer
 select *
 from users u
@@ -36,7 +35,8 @@ group by user_name
 order by ctid);
 
 
--- Solution 2: Using window function.
+-- ______________ S O L U T I O N _______________________
+--  Using window function.
 
 select user_id, user_name, email
 from (
