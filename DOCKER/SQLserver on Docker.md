@@ -43,7 +43,7 @@ The cp command can be used to copy files.
   
 One specific file can be copied TO the container like:  
   
-    docker cp foo.txt mycontainer:/foo.txt  
+    docker cp database1.bak mycontainer:/var/opt/mssql/data/database.bak
   
 One specific file can be copied FROM the container like:  
   
