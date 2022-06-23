@@ -172,7 +172,7 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1605897617605" FOLDED="true" HGAP="104" ID="ID_1934317749" LINK="https://youtu.be/ztHopE5Wnpc" MODIFIED="1650427391227" POSITION="right" VSHIFT="-137">
+<node CREATED="1605897617605" HGAP="104" ID="ID_1934317749" LINK="https://youtu.be/ztHopE5Wnpc" MODIFIED="1656005254866" POSITION="right" VSHIFT="-137">
 <richcontent TYPE="NODE"><html>
   <head>
     
@@ -200,7 +200,7 @@
 </html></richcontent>
 </node>
 </node>
-<node CREATED="1605897617605" FOLDED="true" HGAP="81" ID="ID_1799955394" LINK="https://youtu.be/ztHopE5Wnpc" MODIFIED="1650426378609" POSITION="right" VSHIFT="48">
+<node CREATED="1605897617605" HGAP="95" ID="ID_1799955394" LINK="https://youtu.be/ztHopE5Wnpc" MODIFIED="1656005292290" POSITION="right" VSHIFT="155">
 <richcontent TYPE="NODE"><html>
   <head>
     
@@ -228,7 +228,7 @@
 </html></richcontent>
 <edge COLOR="#111111" WIDTH="thin"/>
 <font BOLD="true" NAME="SansSerif" SIZE="18"/>
-<node CREATED="1604423626698" HGAP="42" ID="ID_1474379530" MODIFIED="1650302559427" VSHIFT="-2">
+<node CREATED="1604423626698" FOLDED="true" HGAP="42" ID="ID_1474379530" MODIFIED="1656005441476" VSHIFT="-2">
 <richcontent TYPE="NODE"><html>
   <head>
     
@@ -320,7 +320,30 @@
 <font BOLD="true" NAME="SansSerif" SIZE="18"/>
 </node>
 </node>
-<node CREATED="1650425491409" HGAP="95" ID="ID_868039268" MODIFIED="1650425950433" POSITION="right" VSHIFT="19">
+<node CREATED="1656004981864" HGAP="107" ID="ID_597127344" MODIFIED="1656006055640" POSITION="right" VSHIFT="16">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font size="5">Data Observability</font>
+    </p>
+  </body>
+</html></richcontent>
+<font BOLD="true" NAME="SansSerif" SIZE="12"/>
+<node CREATED="1656005195205" ID="ID_537189018" MODIFIED="1656005227310">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="Data-Observability.jpg" />
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node CREATED="1650425491409" HGAP="95" ID="ID_868039268" MODIFIED="1656004890472" POSITION="right" VSHIFT="19">
 <richcontent TYPE="NODE"><html>
   <head>
     
@@ -335,7 +358,7 @@
   </body>
 </html></richcontent>
 </node>
-<node CREATED="1650426340630" HGAP="90" ID="ID_699070545" LINK="The-Data-Lakehouse.pdf" MODIFIED="1650426948020" POSITION="right" VSHIFT="15">
+<node CREATED="1650426340630" HGAP="90" ID="ID_699070545" LINK="The-Data-Lakehouse.pdf" MODIFIED="1656004889633" POSITION="right" VSHIFT="15">
 <richcontent TYPE="NODE"><html>
   <head>
     
