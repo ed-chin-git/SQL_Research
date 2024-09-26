@@ -14,10 +14,10 @@ results = sl_conn.execute('SELECT * FROM charactercreator_character;').fetchall(
 
 # Assume user defines database parameters
 # ____ Connect to an ElephantSQL __________
-dbname = os.getenv("DS_DB_NAME")
-user = os.getenv("DS_DB_USER")
-host = os.getenv("DS_DB_HOST")
-passw = os.getenv("DS_DB_PASSWORD")
+dbname = os.getenv("ELEPH_DB_NAME")
+user = os.getenv("ELEPH_DB_USER")
+host = os.getenv("ELEPH_DB_HOST")
+passw = os.getenv("ELEPH_DB_PASSWORD")
 
 pg_conn = pg.connect(dbname=dbname, user=user,
                      password=passw, host=host)

@@ -4,7 +4,8 @@
    Vid :  https://youtu.be/EdTX1LULNJk?t=567
 
 ## Sample Databases from Microsoft
-  https://github.com/ed-chin-git/sql-server-samples/tree/master/samples/databases
+  [Sample Databases](https://github.com/ed-chin-git/sql-server-samples/tree/master/samples/databases)  
+  [Adventure Works Databases](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks)
 
 ## Microsoft Releases
 

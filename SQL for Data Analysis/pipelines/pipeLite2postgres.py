@@ -67,10 +67,10 @@ def run_conversion(pgres_engine):
 def main():
     # __ Connect to ElephantSQL(postgres) (SQLalchemy.create_engine) ____
     # __ credentials stored in .env __
-    dbname = os.getenv("DS_DB_NAME")
-    user = os.getenv("DS_DB_USER")
-    host = os.getenv("DS_DB_HOST")
-    passw = os.getenv("DS_DB_PASSWORD")
+    dbname = os.getenv("ELEPH_DB_NAME")
+    user = os.getenv("ELEPH_DB_USER")
+    host = os.getenv("ELEPH_DB_HOST")
+    passw = os.getenv("ELEPH_DB_PASSWORD")
     pgres_str = 'postgresql+psycopg2://'+user+':'+passw+'@'+host+'/'+dbname
     pgres_engine = create_engine(pgres_str)
 
@@ -78,7 +78,7 @@ def main():
     run_conversion(pgres_engine)
 
     # ___ end main ___________
-    print('Conversion successful.....')
+    print('Conversion completed successfully.....')
     return
 
 #  Launched from the command line

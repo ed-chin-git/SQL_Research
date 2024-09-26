@@ -14,18 +14,18 @@ https://hub.docker.com/_/postgres
     $ docker pull postgres  
     $ docker run -d \
     --name pgres \
-    -p 5400:5432  
+    -p 5432:5432  
     -e POSTGRES_PASSWORD=mysecretpassword \
     -e PGDATA=/var/lib/postgresql/data/pgdata \  create a different data dir
     -v pgres_data:/var/lib/postgresql/data \  
     .................OR \
-    -v D:/databases/pgres:/var/lib/postgresql/data \
+    -v C:/databases/pgres:/var/lib/postgresql/data \
     postgres
     
 ### Docker run parameters
        -e: set environment variables
-       -p: set port  map port from host to container
-       -d: run in detached mode
+       -p host-port:container-port: map port from host to container    
+       -d: run in detached mode (closing the terminal does not stop the container)
        --name:  container name
        -v: mount volume/directory
 ### PGDATA  
@@ -35,7 +35,7 @@ For example:
 
     $ docker run -d \
         --name pgres \
-        -e POSTGRES_PASSWORD=mysecretpassword \
+        -e POSTGRES_PASSWORD=Ec621006 \
         -e PGDATA=/var/lib/postgresql/data/pgdata \
         -v /custom/mount:/var/lib/postgresql/data \
         postgres
@@ -51,3 +51,10 @@ This is an environment variable that is not Docker specific. Because the variabl
      ### Start psql with user(postgres)
      - psql -U postgres
      - \l
+
+## Test Connection in pgAdmin / TablePlus
+     - start pgAdmin : Master Password = 621006
+
+     - login to server :  localhost
+     - user : postgres
+     - passw : Ec621006

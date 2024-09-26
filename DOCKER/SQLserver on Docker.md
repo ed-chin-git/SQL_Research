@@ -55,3 +55,9 @@ Multiple files contained by the folder src can be copied into the target folder 
 
     docker cp src/. mycontainer:/target
     docker cp mycontainer:/src/. target    
+
+## Test Connection in MS-SQL Server Managment Service
+
+    localhost
+    sa
+    @Ec621006

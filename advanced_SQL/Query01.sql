@@ -29,19 +29,18 @@ select * from users;
 select *
 from users u
 where u.ctid not in (
-select min(ctid) as ctid
-from users
-group by user_name
-order by ctid);
+                select min(ctid) as ctid
+                from users
+                group by user_name
+                order by ctid);
 
 
 -- ______________ S O L U T I O N _______________________
 --  Using window function.
 
 select user_id, user_name, email
-from (
-select *,
-row_number() over (partition by user_name order by user_id) as rn
-from users u
-order by user_id) x
+from (select *,
+      row_number() over (partition by user_name order by user_id) as rn
+      from users u
+      order by user_id) x
 where x.rn <> 1;
