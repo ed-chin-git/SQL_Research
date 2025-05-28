@@ -67,7 +67,7 @@ Check that hypervisor features are enabled:
 It is also possible to use PowerShell to manage Hyper-V and VMs.
 
 # The Hyper-V feature is not available in the Home editions of Windows 10 and 11.  
-## However, a little trick allows installing the Hyper-V and VirtualMachinePlatform features from the WinSxS component store even in the Home Windows edition.
+## However, a little trick allows installing the Hyper-V and VirtualMachinePlatform features from the WinSxS component store (C:\Windows\servicing\Packages) even in the Home Windows edition.
 
  To add Hyper-V packages create a 2 batch files with the following code:
 
