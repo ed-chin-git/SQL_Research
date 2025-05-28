@@ -1,3 +1,4 @@
+# __________ CSV file to postgres-DB Pipeline __________
 import psycopg2 as pgres
 import pandas as pd
 import os
@@ -40,7 +41,7 @@ LateAircraftDelay bigint
 );"""
 
 def main():
-    # ____ Load csv ___
+    # ____ Load csv into dataframe___
     print('Loading CSV.......')
     df = pd.read_csv(csv_url)   
 

@@ -21,16 +21,23 @@ https://hub.docker.com/_/postgres
     .................OR \
     -v C:/databases/pgres:/var/lib/postgresql/data \
     postgres
+
+--volume or -v maps a directory from the host into the container, allowing bidirectional file system access.  
+Using bind mounts is crucial for persisting data or sharing configuration files and other assets between the host and the container. It is ideal for environments where data needs to be retained after container stoppages.  
     
+    --volume /path/to/host_path:/path/to/container_path 
+
 ### Docker run parameters
        -e: set environment variables
        -p host-port:container-port: map port from host to container    
        -d: run in detached mode (closing the terminal does not stop the container)
        --name:  container name
        -v: mount volume/directory
+
 ### PGDATA  
 This optional variable can be used to define another location - like a subdirectory - for the database files. The default is /var/lib/postgresql/data. If the data volume you're using is a filesystem mountpoint (like with GCE persistent disks) or remote folder that cannot be chowned to the postgres user (like some NFS mounts), Postgres initdb recommends a subdirectory be created to contain the data.
 
+Important Note: Mount the data volume at /var/lib/postgresql/data and not at /var/lib/postgresql because mounts at the latter path WILL NOT PERSIST database data when the container is re-created. The Dockerfile that builds the image declares a volume at /var/lib/postgresql/data and if no data volume is mounted at that path then the container runtime will automatically create an anonymous volume⁠ that is not reused across container re-creations. Data will be written to the anonymous volume rather than your intended data volume and won't persist when the container is deleted and re-created.
 For example:
 
     $ docker run -d \
@@ -39,7 +46,7 @@ For example:
         -e PGDATA=/var/lib/postgresql/data/pgdata \
         -v /custom/mount:/var/lib/postgresql/data \
         postgres
-This is an environment variable that is not Docker specific. Because the variable is used by the postgres server binary (see the PostgreSQL docs), the entrypoint script takes it into account.
+This is an environment variable that is not Docker specific. Because the variable is used by the postgres server binary (see the PostgreSQL docs), the entrypoint script takes it into account.  
 
 ## Start the existing docker container
 
