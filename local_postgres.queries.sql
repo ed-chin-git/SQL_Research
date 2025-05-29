@@ -1,3 +1,9 @@
+-- This query retrieves the number of survivors and deaths from the Titanic dataset, grouped by passenger class.
+-- It uses subqueries to count survivors and deaths separately, then joins the results on passenger class.
+--
+-- Start docker container "pgres" to launch database server.
+-- Connect to the "flights" database using the connection local_postgres.   
+
 SELECT
   SURVIVORS.passenger_class,
   SURVIVORS.Num_Of_Survivors,
@@ -20,5 +26,3 @@ inner join
 ) AS DEATHS
 on SURVIVORS.passenger_class = DEATHS.pclass
 ORDER BY SURVIVORS.passenger_class;
--- This query retrieves the number of survivors and deaths from the Titanic dataset, grouped by passenger class.
--- It uses subqueries to count survivors and deaths separately, then joins the results on passenger class.
