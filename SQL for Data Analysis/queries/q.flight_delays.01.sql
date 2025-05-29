@@ -8,7 +8,7 @@ FROM
     tailnum,
     AVG(depdelay) AS avg_dd
   FROM
-    flight_delays
+    flights
   GROUP BY tailnum
   ORDER BY avg_dd )
   AS tailnum_avgdd
@@ -24,7 +24,7 @@ FROM
     tailnum,
     AVG(depdelay) AS avg_dd
   FROM
-    flight_delays
+    flights
   GROUP BY tailnum
   ORDER BY avg_dd DESC ) 
   AS tailnum_avgdd

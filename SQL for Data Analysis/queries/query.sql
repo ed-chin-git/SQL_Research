@@ -1,1 +1,0 @@
-COPY flight_delays FROM 'flights.csv' DELIMITER ',' CSV HEADER;
