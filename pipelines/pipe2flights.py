@@ -5,12 +5,12 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-csv_url = "flights.csv"
-new_table_name = 'flight_delay'
+csv_url = "flights-2007.csv"
+new_table_name = 'flight_delays'
 new_table_columns = """(
 id SERIAL PRIMARY KEY,
-Yr int,
-Mnth int,
+Year int,
+Month int,
 DayofMonth int,
 DayOfWeek int,
 DepTime numeric,
@@ -69,11 +69,18 @@ def main():
     pg_cur.execute('CREATE TABLE {} '.format(new_table_name) + new_table_columns)
     pg_conn.commit()  # commit the CREATE
 
+
+    # print(df.columns)
+    # df_len = len(df)
+    # for index, row in df.iterrows():
+    #     print(index, row.Month, row.DayofMonth, end='/    ')
+
     # ____ Port df to Postgres ___
     df_len = len(df)
     for index, row in df.iterrows():
-        row_data = (row.Yr,
-                    row.Mnth,
+        row_data = (
+                    row.Year,
+                    row.Month,
                     row.DayofMonth,
                     row.DayOfWeek,
                     row.DepTime,
@@ -103,7 +110,7 @@ def main():
                     row.LateAircraftDelay)
         SQLinsert = SQLinsert_prefix + str(row_data)
         print('\r', end='')
-        print('Inserting Row:{}   {:2.0f} percent complete'.format(index, (index/df_len)*100), end='')
+        print('Inserted Row:{}   {:2.0f} percent complete'.format(index, (index/df_len)*100), end='')
         pg_cur.execute(SQLinsert)
         pg_conn.commit()  # commit INSERT
 

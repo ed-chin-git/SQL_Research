@@ -15,7 +15,7 @@ https://hub.docker.com/_/postgres
     $ docker run -d \
     --name pgres \
     -p 5432:5432  
-    -e POSTGRES_PASSWORD=mysecretpassword \
+    -e POSTGRES_PASSWORD=Ec621006 \
     -e PGDATA=/var/lib/postgresql/data/pgdata \  create a different data dir
     -v pgres_data:/var/lib/postgresql/data \  
     .................OR \

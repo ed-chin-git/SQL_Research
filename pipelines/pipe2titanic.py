@@ -21,10 +21,10 @@ fare numeric
 
 def main():
     # ____ Connect to DB Server __________
-    dbname = os.getenv("local_DB_NAME")
-    user = os.getenv("local_DB_USER")
-    host = os.getenv("local_DB_HOST")
-    passw = os.getenv("local_DB_PASSWORD")
+    dbname = os.getenv("Local_PGRES_DB_NAME")
+    user = os.getenv("Local_PGRES_DB_USER")
+    host = os.getenv("Local_PGRES_DB_HOST")
+    passw = os.getenv("Local_PGRES_DB_PASSWORD")
     pgres_str = 'dbname=' + dbname + ' user=' + user +' host=' + host + ' password=' + passw
     pg_conn = pgres.connect(pgres_str)
 

@@ -1,9 +1,9 @@
-DROP TABLE IF EXISTS flight_delays CASCADE;
-
-CREATE TABLE flight_delays
+DROP TABLE IF EXISTS flights CASCADE;
+DROP TABLE IF EXISTS flight_test CASCADE;
+CREATE TABLE flights 
 (
-   yr                 integer,
-   mnth               integer,
+   year               integer,
+   month              integer,
    dayofmonth         integer,
    dayofweek          integer,
    deptime            numeric,
