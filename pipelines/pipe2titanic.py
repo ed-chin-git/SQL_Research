@@ -22,6 +22,7 @@ fare numeric
 def main():
     # ____ Connect to DB Server __________
     dbname = os.getenv("Local_PGRES_DB_NAME")
+    dbname = 'titanic'
     user = os.getenv("Local_PGRES_DB_USER")
     host = os.getenv("Local_PGRES_DB_HOST")
     passw = os.getenv("Local_PGRES_DB_PASSWORD")
