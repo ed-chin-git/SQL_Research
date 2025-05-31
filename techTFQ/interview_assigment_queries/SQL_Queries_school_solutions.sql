@@ -1,3 +1,8 @@
+-- Title: CTE Query Example
+-- Description: SQL queries to solve the interview assignment for a school management system
+
+-- USE DATABASE school
+
 /* ******************** ALL TABLES ******************** */
 select * from users;
 select * from batches;
@@ -9,19 +14,15 @@ select * from tests;
 select * from test_scores;
 
 
-
-
 /* ******************** QUESTION #1 ******************** */
 --> 1. Calculate the average rating given by students to each teacher for each session created. Also, provide the batch name for which session was conducted.
-select a.session_id, b.name as batch, u.name as teacher, round(avg(a.rating):decimal,2) as avg_rating
+select a.session_id, b.name as batch, u.name as teacher, round(avg(a.rating),2) as avg_rating
 from attendances a
 join sessions s on a.session_id = s.id
 join batches b on b.id = s.batch_id
 join users u on u.id = s.conducted_by
 group by a.session_id, b.name, u.name
 order by 1;
-
-
 
 
 /* ******************** QUESTION #2 ******************** */
@@ -52,16 +53,12 @@ join batches b on b.id = s.batch_id
 join users u on u.id = s.conducted_by;
 
 
-
-
 /* ******************** QUESTION #3 ******************** */
 --> 3. What is the average marks scored by each student in all the tests the student had appeared?
 select user_id as student, round(avg(score),2) as avg_score
 from test_scores ts
 group by user_id
 order by 1;
-
-
 
 
 /* ******************** QUESTION #4 ******************** */
@@ -74,8 +71,6 @@ join batches b on b.id = t.batch_id
 where ((ts.score::decimal/t.total_mark::decimal)*100) >= 40
 group by ts.test_id,b.name
 order by 1;
-
-
 
 
 /* ******************** QUESTION #5 ******************** */
@@ -106,8 +101,6 @@ join users u on u.id = TS.student_id
 order by 1;
 
 
-
-
 /* ******************** QUESTION #6 ******************** */
 --> 6. What is the average percentage of marks scored by each student in all the tests the student had appeared?
 with percentage_marks as
@@ -120,8 +113,6 @@ select student, round(avg(marks_percentage),2) as avg_marks_percent
 from percentage_marks
 group by student
 order by 1;
-
-
 
 
 /* ******************** QUESTION #7 ******************** */
@@ -143,8 +134,6 @@ select TSPT.test_id, batch
 from total_students_per_test TSPT
 left join students_passed TP on TP.test_id = TSPT.test_id
 order by 1;
-
-
 
 
 /* ******************** QUESTION #8 ******************** */
