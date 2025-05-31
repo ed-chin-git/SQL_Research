@@ -18,6 +18,7 @@ SQL Server Docker volumes [https://umatechnology.org/how-to-set-up-a-microsoft-s
     /var/opt/mssql 
 ## Initial creation of docker container from the docker hub image
     docker run 
+        -d
         -e "ACCEPT_EULA=Y" 
         -e "SA_PASSWORD=Ec621006" 
         -e "MSSQL_PID=Developer" 
@@ -26,9 +27,11 @@ SQL Server Docker volumes [https://umatechnology.org/how-to-set-up-a-microsoft-s
         -v sqlserver_data:/var/opt/mssql
         --name "ssrv2017" 
         edgardochin/ms_sqlserver:sqlserver-2017
-.  
 
-    docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Ec621006" -e "MSSQL_PID=Developer" -e "Tag_Version=2019-latest" -p 1433:1433 -v sqlserver_data:/var/opt/mssql --name "ssrv2019" mcr.microsoft.com/mssql/server:2019-latest
+Starting with Sql Server 2025 the environment variable for SA_PASSWORD is changed to MSSQL_SA_PASSWORD.   
+The image  edgardochin/ms_sqlserver:sqlserver-2025 in docker hub has a preset SA password(@SuperSecure1) that cannot be changed when the container is created
+
+    docker run -d -e "ACCEPT_EULA=Y" -e "MSSQL_PID=Developer" -p 1433:1433 -v c:\databases\sqlserver-2025:/var/opt/mssql --name "ssrv2025" marvipi/embalagem-repository-sqlserver:latest
 -e: set environment variables  
 -p: set port  map port from host to container  
 -d: run in detached mode  

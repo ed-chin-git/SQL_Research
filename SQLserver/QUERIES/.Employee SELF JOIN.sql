@@ -1,4 +1,4 @@
-/****** Script for SelectTopNRows command from SSMS  ******/
+USE AdventureWorks2012
 SELECT TOP (1000) E1.[id]
       ,E1.[name]
       ,E1.[super_id]

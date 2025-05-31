@@ -11,16 +11,16 @@ https://hub.docker.com/_/postgres
     $ docker volume ls
     
 ## Initial creation of container from the image  
-    $ docker pull postgres  
+    $ docker pull postgres:17.5  
     $ docker run -d \
-    --name pgres \
+    --name postgres17 \
     -p 5432:5432  
     -e POSTGRES_PASSWORD=Ec621006 \
-    -e PGDATA=/var/lib/postgresql/data/pgdata \  create a different data dir
+    -e PGDATA=/var/lib/postgresql/data/pgdat17 \  create a different data dir
     -v pgres_data:/var/lib/postgresql/data \  
     .................OR \
     -v C:/databases/pgres:/var/lib/postgresql/data \
-    postgres
+    postgres:17.5
 
 --volume or -v maps a directory from the host into the container, allowing bidirectional file system access.  
 Using bind mounts is crucial for persisting data or sharing configuration files and other assets between the host and the container. It is ideal for environments where data needs to be retained after container stoppages.  
