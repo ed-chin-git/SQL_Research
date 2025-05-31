@@ -1,3 +1,4 @@
+
 -- Drop tables and sequence:
 DROP TABLE student_batch_maps;
 DROP TABLE instructor_batch_maps;

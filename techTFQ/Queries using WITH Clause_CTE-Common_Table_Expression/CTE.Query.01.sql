@@ -1,0 +1,3 @@
+--	SQL -WITH clause	https://youtu.be/QNfnuK-1YYY?si=Oxv1SBTUCjmk5xhY 
+--	       : referred to as Common Table Expressions(CTE) or Sub-Query Factoring
+-- https://youtu.be/QNfnuK-1YYY?si=Oxv1SBTUCjmk5xhY
