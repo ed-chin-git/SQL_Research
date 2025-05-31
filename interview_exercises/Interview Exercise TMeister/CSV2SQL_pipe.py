@@ -11,7 +11,7 @@ load_dotenv()
 def db_connect():
     # __ Connect to postgres-DB(SQLalchemy.create_engine) ____
     dbname = os.getenv("Local_DB_NAME")
-    dbname = 'school'  
+    dbname = 'tmeister'  
     user = os.getenv("Local_DB_USER")
     host = os.getenv("Local_DB_HOST")
     passw = os.getenv("Local_DB_PASSWORD")

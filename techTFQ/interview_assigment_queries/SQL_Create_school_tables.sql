@@ -1,20 +1,21 @@
+--  CREATE TABLES AND SEQUENCES FOR SCHOOL MANAGEMENT SYSTEM  
 
 -- Drop tables and sequence:
-DROP TABLE student_batch_maps;
-DROP TABLE instructor_batch_maps;
-DROP TABLE attendances;
-DROP TABLE sessions;
-DROP TABLE test_scores;
-DROP TABLE tests;
-DROP TABLE users;
-DROP TABLE batches;
+DROP TABLE IF EXISTS student_batch_maps;
+DROP TABLE IF EXISTS instructor_batch_maps;
+DROP TABLE IF EXISTS attendances;
+DROP TABLE IF EXISTS sessions;
+DROP TABLE IF EXISTS test_scores;
+DROP TABLE IF EXISTS tests;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS batches;
 
-DROP SEQUENCE instructor_batch_maps_id_seq;
-DROP SEQUENCE sessions_id_seq;
-DROP SEQUENCE tests_id_seq;
-DROP SEQUENCE student_batch_maps_id_seq;
-DROP SEQUENCE users_id_seq;
-DROP SEQUENCE batch_id_seq;
+DROP SEQUENCE IF EXISTS instructor_batch_maps_id_seq;
+DROP SEQUENCE IF EXISTS sessions_id_seq;
+DROP SEQUENCE IF EXISTS tests_id_seq;
+DROP SEQUENCE IF EXISTS student_batch_maps_id_seq;
+DROP SEQUENCE IF EXISTS users_id_seq;
+DROP SEQUENCE IF EXISTS batch_id_seq;
 
 
 -- 1.users table:  name(user name), active(boolean to check if user is active)
