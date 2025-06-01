@@ -2,6 +2,8 @@
 
 /* __________  SUBQUERIES  __________  	*/
 
+USE DATABASE TFQ_employee  ;
+
 /* QUESTION: Find the employees who's salary is more than the average salary earned by all employees. */
 -- 1) find the avg salary
 select avg(salary) 
