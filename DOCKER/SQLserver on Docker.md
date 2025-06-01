@@ -1,6 +1,7 @@
 #  Docker Installation of MS SQL Server     
 ## Find an image
   Docker Hub Microsoft Repository  [https://hub.docker.com/_/microsoft-mssql-server]  
+    [https://learn.microsoft.com/en-us/sql/linux/tutorial-restore-backup-in-sql-server-container?view=sql-server-ver17&tabs=cli]
 
 ## Pull the image
     docker pull edgardochin/ms_sqlserver:2017-latest   
@@ -28,10 +29,9 @@ SQL Server Docker volumes [https://umatechnology.org/how-to-set-up-a-microsoft-s
         --name "ssrv2017" 
         edgardochin/ms_sqlserver:sqlserver-2017
 
-Starting with Sql Server 2025 the environment variable for SA_PASSWORD is changed to MSSQL_SA_PASSWORD.   
-The image  edgardochin/ms_sqlserver:sqlserver-2025 in docker hub has a preset SA password(@SuperSecure1) that cannot be changed when the container is created
+Starting with Sql Server 2022 the environment variable for SA_PASSWORD is changed to MSSQL_SA_PASSWORD.   
 
-    docker run -d -e "ACCEPT_EULA=Y" -e "MSSQL_PID=Developer" -p 1433:1433 -v c:\databases\sqlserver-2025:/var/opt/mssql --name "ssrv2025" marvipi/embalagem-repository-sqlserver:latest
+    docker run -d -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=@Ec621006" -e "MSSQL_PID=Developer" -p 1433:1433 -v ssrvdata-2025:/var/opt/mssql --name "ssrv2025" mcr.microsoft.com/mssql/server:2025-latest 
 -e: set environment variables  
 -p: set port  map port from host to container  
 -d: run in detached mode  
