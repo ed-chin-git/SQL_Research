@@ -2,6 +2,8 @@
     https://youtu.be/i3xK7Nc414Q
 **/
 
+-- USE DATABASE techTFQ;
+
 drop table if exists family_members CASCADE;
 create table family_members
 (

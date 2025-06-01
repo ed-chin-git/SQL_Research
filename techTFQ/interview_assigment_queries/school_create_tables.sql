@@ -1,5 +1,7 @@
 --  CREATE TABLES AND SEQUENCES FOR SCHOOL MANAGEMENT SYSTEM  
 
+-- USE DATABASE school;
+
 -- Drop tables and sequence:
 DROP TABLE IF EXISTS student_batch_maps;
 DROP TABLE IF EXISTS instructor_batch_maps;
