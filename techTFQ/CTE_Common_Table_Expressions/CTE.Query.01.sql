@@ -2,8 +2,12 @@
 	    : referred to as Common Table Expressions(CTE) or Sub-Query Factoring
     https://youtu.be/QNfnuK-1YYY?si=Oxv1SBTUCjmk5xhY
 
+-- USE DATABASE techTFQ;
+
     _________________ QUERIES _______________________
 */
+set search_path = store;
+
 select * from sales;
 select * from emp;
 

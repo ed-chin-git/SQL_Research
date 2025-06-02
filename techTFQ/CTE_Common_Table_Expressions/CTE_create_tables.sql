@@ -6,7 +6,8 @@
 -- USE DATABASE techTFQ;
 
 --______ Create emp _______________
-drop table if exists emp;
+set search_path = store; 
+drop table if exists emp cascade;
 create table emp
 ( emp_ID int
 , emp_NAME varchar(50)
@@ -22,7 +23,7 @@ insert into emp values(106, 'Jimmy', 90000);
 select * from emp;
 
 -- ______create sales _____
-DROP table if exists sales ;
+DROP table if exists sales cascade;
 create table sales
 (
 	store_id  		int,

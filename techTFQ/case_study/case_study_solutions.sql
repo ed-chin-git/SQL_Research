@@ -3,27 +3,31 @@
 --  DATA: https://www.kaggle.com/datasets/mexwell/famous-paintings  
 
 --1) Fetch all the paintings which are not displayed on any museums?
+	SET search_path = paintings;
 	select * from work where museum_id is null;
 
 
 --2) Are there museuems without any paintings?
+	set search_path = paintings;
 	select * from museum m
 	where not exists (select 1 from work w
 					 where w.museum_id=m.museum_id)
 
-
 --3) How many paintings have an asking price of more than their regular price? 
+	set search_path = paintings;
 	select * from product_size
 	where sale_price > regular_price;
 
 
 --4) Identify the paintings whose asking price is less than 50% of its regular price
+	set search_path = paintings;
 	select * 
 	from product_size
 	where sale_price < (regular_price*0.5);
 
 
 --5) Which canva size costs the most?
+	set search_path = paintings;
 	select cs.label as canva, ps.sale_price
 	from (select *
 		  , rank() over(order by sale_price desc) as rnk 
@@ -33,6 +37,7 @@
 
 
 --6) Delete duplicate records from work, product_size, subject and image_link tables
+	set search_path = paintings;
 	delete from work 
 	where ctid not in (select min(ctid)
 						from work
@@ -55,11 +60,13 @@
 
 
 -- 7) Identify the museums with invalid city information in the given dataset
+	set search_path = paintings;
 	select * from museum 
 	where city ~ '^[0-9]'
 
 
 --8) Museum_Hours table has 1 invalid entry. Identify it and remove it.
+	set search_path = paintings;
 	delete from museum_hours 
 	where ctid not in (select min(ctid)
 						from museum_hours
@@ -67,6 +74,7 @@
 
 
 --9) Fetch the top 10 most famous painting subject
+	set search_path = paintings;
 	select * 
 	from (
 		select s.subject,count(1) as no_of_paintings
@@ -78,6 +86,7 @@
 
 
 --10) Identify the museums which are open on both Sunday and Monday. Display museum name, city.
+	set search_path = paintings;
 	select distinct m.name as museum_name, m.city, m.state,m.country
 	from museum_hours mh 
 	join museum m on m.museum_id=mh.museum_id
@@ -88,6 +97,7 @@
 
 
 --11) How many museums are open every single day?
+	set search_path = paintings;
 	select count(1)
 	from (select museum_id, count(1)
 		  from museum_hours
@@ -96,6 +106,7 @@
 
 
 --12) Which are the top 5 most popular museum? (Popularity is defined based on most no of paintings in a museum)
+	set search_path = paintings;
 	select m.name as museum, m.city,m.country,x.no_of_painintgs
 	from (	select m.museum_id, count(1) as no_of_painintgs
 			, rank() over(order by count(1) desc) as rnk
@@ -107,6 +118,7 @@
 
 
 --13) Who are the top 5 most popular artist? (Popularity is defined based on most no of paintings done by an artist)
+	set search_path = paintings;
 	select a.full_name as artist, a.nationality,x.no_of_painintgs
 	from (	select a.artist_id, count(1) as no_of_painintgs
 			, rank() over(order by count(1) desc) as rnk
@@ -118,6 +130,7 @@
 
 
 --14) Display the 3 least popular canva sizes
+	set search_path = paintings;
 	select label,ranking,no_of_paintings
 	from (
 		select cs.size_id,cs.label,count(1) as no_of_paintings
@@ -130,6 +143,7 @@
 
 
 --15) Which museum is open for the longest during a day. Dispay museum name, state and hours open and which day?
+	set search_path = paintings;
 	select museum_name,state as city, day, open, close, duration
 	from (select m.name as museum_name, m.state, day, open, close
 			, to_timestamp(open,'HH:MI AM') 
@@ -142,6 +156,7 @@
 
 
 --16) Which museum has the most no of most popular painting style?
+	set search_path = paintings;
 	with pop_style as 
 			(select style
 			,rank() over(order by count(1) desc) as rnk
@@ -162,6 +177,7 @@
 
 
 --17) Identify the artists whose paintings are displayed in multiple countries
+	set search_path = paintings;
 	with cte as
 		(select distinct a.full_name as artist
 		--, w.name as painting, m.name as museum
@@ -177,6 +193,7 @@
 
 
 --18) Display the country and the city with most no of museums. Output 2 seperate columns to mention the city and country. If there are multiple value, seperate them with comma.
+	set search_path = paintings;
 	with cte_country as 
 			(select country, count(1)
 			, rank() over(order by count(1) desc) as rnk
@@ -195,7 +212,8 @@
 
 
 --19) Identify the artist and the museum where the most expensive and least expensive painting is placed. 
-Display the artist name, sale_price, painting name, museum name, museum city and canvas label
+--           Display the artist name, sale_price, painting name, museum name, museum city and canvas label
+	set search_path = paintings;
 	with cte as 
 		(select *
 		, rank() over(order by sale_price desc) as rnk
@@ -215,6 +233,7 @@ Display the artist name, sale_price, painting name, museum name, museum city and
 
 
 --20) Which country has the 5th highest no of paintings?
+	set search_path = paintings;
 	with cte as 
 		(select m.country, count(1) as no_of_Paintings
 		, rank() over(order by count(1) desc) as rnk
@@ -227,6 +246,7 @@ Display the artist name, sale_price, painting name, museum name, museum city and
 
 
 --21) Which are the 3 most popular and 3 least popular painting styles?
+	set search_path = paintings;
 	with cte as 
 		(select style, count(1) as cnt
 		, rank() over(order by count(1) desc) rnk
@@ -242,6 +262,7 @@ Display the artist name, sale_price, painting name, museum name, museum city and
 
 
 --22) Which artist has the most no of Portraits paintings outside USA?. Display artist name, no of paintings and the artist nationality.
+	set search_path = paintings;
 	select full_name as artist_name, nationality, no_of_paintings
 	from (
 		select a.full_name, a.nationality
