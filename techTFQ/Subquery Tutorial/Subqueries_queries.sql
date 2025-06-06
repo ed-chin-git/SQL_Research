@@ -2,7 +2,8 @@
 
 /* __________  SUBQUERIES  __________  	*/
 
-USE DATABASE TFQ_employee  ;
+-- USE connection to database TFQ_employee;
+set search_path to PUBLIC;
 
 /* QUESTION: Find the employees who's salary is more than the average salary earned by all employees. */
 -- 1) find the avg salary

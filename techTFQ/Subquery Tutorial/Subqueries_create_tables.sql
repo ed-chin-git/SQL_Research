@@ -1,6 +1,8 @@
 -- https://youtu.be/nJIEIzF7tDw?si=DApybr351tpsWMh7
 
 -- USE DATABASE TFQ_employee  
+-- USE SCHEMA PUBLIC;
+set search_path to PUBLIC;
 
 DROP TABLE IF EXISTS employee_history CASCADE;
 DROP TABLE IF EXISTS EMPLOYEE CASCADE;

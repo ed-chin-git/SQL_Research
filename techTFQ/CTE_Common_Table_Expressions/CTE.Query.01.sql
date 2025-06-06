@@ -8,6 +8,7 @@
 */
 set search_path = store;
 
+
 select * from sales;
 select * from emp;
 
