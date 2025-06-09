@@ -1,8 +1,9 @@
 /**  https://csharp-video-tutorials.blogspot.com/2012/08/self-join-in-sql-server-part-14.html 
      https://youtu.be/qnYSN_7qwgg
 **/
-USE kudvenkat
+USE techTFQ
 GO
+set search_path = department;
 /**
 Select E.Name as Employee, M.Name as Manager
 from dbo.tblEmployee E

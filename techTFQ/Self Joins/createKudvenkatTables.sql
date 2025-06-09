@@ -1,33 +1,48 @@
--- In ssrv2019 docker container
-
-USE kudvenkat
+/*-- In MS SQL Server
+USE techTFQ
 GO
+*/
 
-Create table tblDepartment
+-- postgres : Set the search path to the department schema
+-- This assumes that the department schema already exists in the techTFQ database.
+set search_path = department;
+
+
+-- Create tables and insert data for Self Joins demo
+-- Tables: tbldepartment, tblEmployee
+Create table tbldepartment
 (
      ID int primary key,
-     DepartmentName nvarchar(50),
-     Location nvarchar(50),
-     DepartmentHead nvarchar(50)
+     DepartmentName varchar(50),
+     Location varchar(50),
+     DepartmentHead varchar(50)
 )
-Go
+-- Go
 
-Insert into tblDepartment values (1, 'IT', 'London', 'Rick')
-Insert into tblDepartment values (2, 'Payroll', 'Delhi', 'Ron')
-Insert into tblDepartment values (3, 'HR', 'New York', 'Christie')
-Insert into tblDepartment values (4, 'Other Department', 'Sydney', 'Cindrella')
-Go
+Insert into tbldepartment values (1, 'IT', 'London', 'Rick')
+Insert into tbldepartment values (2, 'Payroll', 'Delhi', 'Ron')
+Insert into tbldepartment values (3, 'HR', 'New York', 'Christie')
+Insert into tbldepartment values (4, 'Other Department', 'Sydney', 'Cindrella')
 
+-- Go
+
+
+
+set search_path = department;
 Create table tblEmployee
 (
      ID int primary key,
-     Name nvarchar(50),
-     Gender nvarchar(50),
+     Name varchar(50),
+     Gender varchar(50),
      Salary int,
-     DepartmentId int foreign key references tblDepartment(Id)
+     DepartmentId int,
+     CONSTRAINT fk_Department
+     FOREIGN KEY(DepartmentId) 
+     REFERENCES tbldepartment(Id)
 )
-Go
+--Go
 
+set search_path = department;
 Insert into tblEmployee values (1, 'Tom', 'Male', 4000, 1)
 Insert into tblEmployee values (2, 'Pam', 'Female', 3000, 3)
 Insert into tblEmployee values (3, 'John', 'Male', 3500, 1)
@@ -38,4 +53,4 @@ Insert into tblEmployee values (7, 'Sara', 'Female', 4800, 3)
 Insert into tblEmployee values (8, 'Valarie', 'Female', 5500, 1)
 Insert into tblEmployee values (9, 'James', 'Male', 6500, NULL)
 Insert into tblEmployee values (10, 'Russell', 'Male', 8800, NULL)
-Go
+-- Go
