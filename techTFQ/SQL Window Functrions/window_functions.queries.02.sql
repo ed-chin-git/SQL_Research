@@ -1,7 +1,6 @@
--- All the SQL Queries written during this video
--- https://youtu.be/Ww71knvhQ-s?si=IYSgHy0I3432CS7E
--- connect to techTFQ database
-set search_path to 'public';  --set schema to public
+-- connect to techTFQ in VC
+
+set search_path = 'public';  --set schema to public
 
 select * from product;
 
@@ -25,7 +24,7 @@ last_value(product_name)
 from product
 WHERE product_category ='Phone';
 
---use Window functions
+-- Window functions 101
 /* window functions allow calculations 
 across a set of rows related to the current row 
 without grouping them into a single output.
