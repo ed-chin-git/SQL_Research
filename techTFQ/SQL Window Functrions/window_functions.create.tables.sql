@@ -1,8 +1,8 @@
 -- https://youtu.be/Ww71knvhQ-s?si=IYSgHy0I3432CS7E
 
 -- Script to create the Product table and load data into it.
-
-DROP TABLE product;
+SET search_path = PUBLIC;
+DROP TABLE IF EXISTS product CASCADE;
 CREATE TABLE product
 ( 
     product_category varchar(255),

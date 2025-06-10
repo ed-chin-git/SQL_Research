@@ -15,10 +15,8 @@ FROM
      Left Join tblemployee M
      On E.ManagerID = M.Id
      Left Join tbldepartment D
-     On E.departmentid = D.Id
-     ORDER BY Manager
-    ) AS EmployeeManagerDepartment
-ORDER BY Department, Manager ASC;
+     On E.departmentid = D.Id) AS EmployeeManagerDepartment
+ORDER BY Department, Manager DESC, Employee ASC;
 
 SELECT
     E.ID as ID,
