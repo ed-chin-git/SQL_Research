@@ -1,4 +1,4 @@
--- connect to techTFQ in VC
+-- connect to TFQ_employee in VC
 
 set search_path = 'public';  --set schema to public
 
