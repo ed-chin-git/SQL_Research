@@ -1,9 +1,12 @@
 #  Docker Installation of PostGres
-https://hub.docker.com/_/postgres
+[Docker Official Images](https://hub.docker.com/_/postgres)
 
+## [Persistant Storage in docker](https://docs.docker.com/engine/storage/)  
+[Volume Mounts](https://docs.docker.com/engine/storage/#volume-mounts)  
+[Bind Mounts](https://docs.docker.com/engine/storage/bind-mounts/)  
+[tmpfs Mounts](https://docs.docker.com/engine/storage/tmpfs/)  
+[Named Pipes](https://docs.docker.com/engine/storage/#named-pipes)  
 
-
-## Create persistant volume in docker,
 ## later mapped to default data folder in container
 ### Docker volumes are stored in \\\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes  
 
