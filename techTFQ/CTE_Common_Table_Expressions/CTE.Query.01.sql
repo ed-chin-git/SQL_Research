@@ -6,7 +6,7 @@
 
     _________________ QUERIES _______________________
 */
-set search_path = store;
+set search_path = store;  -- Set schema
 
 
 select * from sales;

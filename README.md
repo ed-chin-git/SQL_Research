@@ -1,6 +1,7 @@
 # SQL Research Repo
 
 ## [Understanding SQL Query Execution](https://youtu.be/uvACOp4WFR4?si=OsW9RtxV_Fp2mTWo)  
+[SQL Execution Order](https://youtu.be/BHwzDmr6d7s?si=SZoqSIi8h1x-HmmF)
   
 ## [Solving the most complex SQL Problem on LeetCode](https://youtu.be/n0YG6arGHr0?si=dCtSdeSvCmYE9acg)  
 

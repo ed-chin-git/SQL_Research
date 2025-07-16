@@ -3,8 +3,8 @@ SELECT
     MAX(delays_by_tailnum.avg_dd)
 FROM
     (SELECT 
-     tailnum,
-     AVG(depdelay) AS avg_dd
+      tailnum,
+      AVG(depdelay) AS avg_dd
     FROM 
     flights
     GROUP BY tailnum

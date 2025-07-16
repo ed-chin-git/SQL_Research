@@ -1,11 +1,14 @@
 -- Case Study: Art Gallery Database
 -- https://youtu.be/AZ29DXaJ1Ts?si=ARFKdfs_S2hoolXL  
---  DATA: https://www.kaggle.com/datasets/mexwell/famous-paintings  
+-- data source: https://www.kaggle.com/datasets/mexwell/famous-paintings  
+-- docker container : postgres17.5
+-- pgres database : techTFQ
+-- 		   schema : paintings
+
 
 --1) Fetch all the paintings which are not displayed on any museums?
 	SET search_path = paintings;
 	select * from work where museum_id is null;
-
 
 --2) Are there museuems without any paintings?
 	set search_path = paintings;
@@ -16,7 +19,7 @@
 --3) How many paintings have an asking price of more than their regular price? 
 	set search_path = paintings;
 	select * from product_size
-	where sale_price > regular_price;
+	where sale_price < regular_price;
 
 
 --4) Identify the paintings whose asking price is less than 50% of its regular price

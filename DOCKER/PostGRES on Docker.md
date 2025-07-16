@@ -3,7 +3,7 @@
 
 ## [Persistant Storage in docker](https://docs.docker.com/engine/storage/)  
 [Volume Mounts](https://docs.docker.com/engine/storage/#volume-mounts)  
-[Bind Mounts](https://docs.docker.com/engine/storage/bind-mounts/)  
+[Bind Mounts](https://docs.docker.com/engine/storage/bind-mounts/)  Volumes are not a good choice if you need to access the files from the host, as the volume is completely managed by Docker. Use bind mounts if you need to access files or directories from both containers and the host.  
 [tmpfs Mounts](https://docs.docker.com/engine/storage/tmpfs/)  
 [Named Pipes](https://docs.docker.com/engine/storage/#named-pipes)  
 
@@ -12,17 +12,20 @@
 
     $ docker volume create --name pgres_data  
     $ docker volume ls
-    
+## [Back up, restore, or migrate data volumes](https://docs.docker.com/engine/storage/volumes/#back-up-restore-or-migrate-data-volumes)
+
+
+
 ## Initial creation of container from the image  
     $ docker pull postgres:17.5  
     $ docker run -d \
     --name postgres17 \
     -p 5432:5432  
-    -e POSTGRES_PASSWORD=Ec621006 \
+    -e POSTGRES_PASSWORD=@Ec621006 \
     -e PGDATA=/var/lib/postgresql/data/pgdat17 \  create a different data dir
     -v pgres_data:/var/lib/postgresql/data \  
     .................OR \
-    -v C:/databases/pgres:/var/lib/postgresql/data \
+    -v D:/databases/pgres:/var/lib/postgresql/data \
     postgres:17.5
 
 --volume or -v maps a directory from the host into the container, allowing bidirectional file system access.  
